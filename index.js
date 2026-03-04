@@ -4,19 +4,8 @@ const path = require('path')
 const fs = require('fs')
 const ffmpegPath = require("ffmpeg-static")
 
-const cors = require('cors')
-app.use(cors())
-
 const app = express()
 app.use(express.json())
-
-const ytDlp = require('yt-dlp-exec')
-
-await ytDlp(url, {
-  extractAudio: true,
-  audioFormat: 'mp3',
-  output: path.join(downloadsDir, '%(title)s.%(ext)s')
-})
 
 app.post('/download', (req, res) => {
     const { url } = req.body
