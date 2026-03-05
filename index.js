@@ -38,21 +38,6 @@ app.post('/download', (req, res) => {
     })
 })
 
-app.get("/test-python", (req, res) => {
-  const { exec } = require("child_process");
-  exec("python3 --version", (err, stdout, stderr) => {
-    if (err) return res.send({ error: err.message });
-    res.send({ python: stdout.trim() });
-  });
-});
-
-app.get("/wich", (req, res) => {
-  const { exec } = require("child_process");
-  exec("which python3", (err, stdout) => {
-    res.send({ path: stdout.trim(), PATH: process.env.PATH });
-  });
-});
-
 app.listen(PORT, HOST, () => {
   console.log('API running on port 3000')
 })
