@@ -4,22 +4,10 @@ const HOST = "0.0.0.0"
 const express = require('express')
 const { spawn } = require('child_process')
 const path = require('path')
-const fs = require('fs')
 const ffmpegPath = require("ffmpeg-static")
 
 const app = express()
 app.use(express.json())
-
-const fs = require("fs")
-try {
-  console.log("Arquivos em /app:")
-  console.log(fs.readdirSync("/app"))
-
-  console.log("Arquivos em /app/yt-api/bin:")
-  console.log(fs.readdirSync("/app/yt-api/bin"))
-} catch (err) {
-  console.error("Erro ao listar arquivos:", err.message)
-}
 
 app.post('/download', (req, res) => {
     const { url } = req.body
