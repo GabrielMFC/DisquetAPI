@@ -46,6 +46,13 @@ app.get("/test-python", (req, res) => {
   });
 });
 
+app.get("/debug", (req, res) => {
+  const { exec } = require("child_process");
+  exec("which python3", (err, stdout) => {
+    res.send({ path: stdout.trim(), PATH: process.env.PATH });
+  });
+});
+
 app.listen(PORT, HOST, () => {
   console.log('API running on port 3000')
 })
