@@ -3,11 +3,11 @@ FROM node:20-alpine
 WORKDIR /app
 
 RUN apk add --no-cache python3 py3-pip \
-    && ln -s /usr/bin/python3 /usr/bin/python
+    && ln -sf python3 /usr/bin/python
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm ci --omit=dev
 
 COPY . .
 
