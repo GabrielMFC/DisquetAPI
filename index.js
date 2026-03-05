@@ -10,6 +10,14 @@ const ffmpegPath = require("ffmpeg-static")
 const app = express()
 app.use(express.json())
 
+const fs = require("fs")
+
+console.log("Arquivos em /app:")
+console.log(fs.readdirSync("/app"))
+
+console.log("Arquivos em /app/yt-api/bin:")
+console.log(fs.readdirSync("/app/yt-api/bin"))
+
 app.post('/download', (req, res) => {
     const { url } = req.body
     if (!url) return res.status(400).json({ error: 'URL required' })
