@@ -11,6 +11,8 @@ RUN npm ci --omit=dev
 
 COPY . .
 
+RUN chmod +x /app/yt-api/bin/yt-dlp
+
 EXPOSE 3000
 
 CMD ["node", "index.js"]
