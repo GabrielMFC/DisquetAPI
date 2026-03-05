@@ -1,3 +1,6 @@
+const PORT = process.env.PORT || 3000
+const HOST = "0.0.0.0"
+
 const express = require('express')
 const { spawn } = require('child_process')
 const path = require('path')
@@ -36,6 +39,6 @@ app.post('/download', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
+app.listen(PORT, HOST, () => {
   console.log('API running on port 3000')
 })
