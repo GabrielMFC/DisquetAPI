@@ -2,7 +2,8 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-RUN apk add --no-cache python3 py3-pip
+RUN apk add --no-cache python3 py3-pip \
+    && ln -s /usr/bin/python3 /usr/bin/python
 
 COPY package*.json ./
 
