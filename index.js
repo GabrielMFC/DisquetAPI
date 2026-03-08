@@ -6,7 +6,7 @@ if (process.env.YT_COOKIES) {
   const cookies = process.env.YT_COOKIES.replace(/\\n/g, "\n")
   fs.writeFileSync("cookies.txt", cookies)
 }
-
+console.log(fs.readFileSync("/app/cookies.txt","utf8"))
 const express = require('express')
 const { spawn } = require('child_process')
 const path = require('path')
