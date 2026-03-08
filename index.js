@@ -17,7 +17,7 @@ app.post('/download', (req, res) => {
     if (!url) return res.status(400).json({ error: 'URL required' })
 
     const output = path.join(__dirname, 'downloads', '%(title)s.%(ext)s')
-    const ytDlpPath = path.join(__dirname, 'yt-api', 'bin', 'yt-dlp')
+    const ytDlpPath = path.join(__dirname, 'yt-dlp', 'bin', 'yt-dlp')
 
     const ytDlp = spawn(ytDlpPath, [
         '--no-playlist',
@@ -53,5 +53,5 @@ app.post('/download', (req, res) => {
 })
 
 app.listen(PORT, HOST, () => {
-  console.log('API running on port 3000')
+  console.log('API running.')
 })
