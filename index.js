@@ -1,13 +1,6 @@
 const PORT = process.env.PORT || 3000
 const HOST = "0.0.0.0"
 const fs = require("fs")
-
-const cookiesRaw = process.env.YT_COOKIES.replace(/\\n/g, "\n")
-
-const cookies = "# Netscape HTTP Cookie File\n" + cookiesRaw
-
-fs.writeFileSync("/app/cookies.txt", cookies)
-
 const express = require('express')
 const { spawn } = require('child_process')
 const path = require('path')
@@ -25,9 +18,6 @@ app.post('/download', (req, res) => {
 
     const output = path.join(__dirname, 'downloads', '%(title)s.%(ext)s')
     const ytDlpPath = path.join(__dirname, 'yt-api', 'bin', 'yt-dlp')
-
-
-    const cookiesPath = path.join(process.cwd(), "cookies.txt")
 
     const ytDlp = spawn(ytDlpPath, [
         '--no-playlist',
