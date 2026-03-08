@@ -2,10 +2,10 @@ const PORT = process.env.PORT || 3000
 const HOST = "0.0.0.0"
 const fs = require("fs")
 
-if (process.env.YT_COOKIES) {
-  const cookies = process.env.YT_COOKIES.replace(/\\n/g, "\n")
-  fs.writeFileSync("cookies.txt", cookies)
-}
+const cookies = process.env.YT_COOKIES.replace(/\\n/g, "\n")
+
+fs.writeFileSync("/app/cookies.txt", cookies)
+
 console.log(fs.readFileSync("/app/cookies.txt","utf8"))
 const express = require('express')
 const { spawn } = require('child_process')
