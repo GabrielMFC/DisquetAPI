@@ -32,7 +32,7 @@ app.post('/download', (req, res) => {
 
     const ytDlp = spawn(ytDlpPath, [
     '--cookies', cookiesPath,
-    '--user-agent', 'Mozilla/5.0',
+    '--extractor-args', 'youtube:player_client=android',
     '-x',
     '--audio-format', 'mp3',
     '--ffmpeg-location', ffmpegPath,
