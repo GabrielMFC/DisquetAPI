@@ -8,7 +8,6 @@ const cookies = "# Netscape HTTP Cookie File\n" + cookiesRaw
 
 fs.writeFileSync("/app/cookies.txt", cookies)
 
-console.log(fs.readFileSync("/app/cookies.txt","utf8"))
 const express = require('express')
 const { spawn } = require('child_process')
 const path = require('path')
@@ -31,13 +30,13 @@ app.post('/download', (req, res) => {
     const cookiesPath = path.join(process.cwd(), "cookies.txt")
 
     const ytDlp = spawn(ytDlpPath, [
-    '--cookies', cookiesPath,
-    '--extractor-args', 'youtube:player_client=android',
-    '-x',
-    '--audio-format', 'mp3',
-    '--ffmpeg-location', ffmpegPath,
-    '-o', output,
-    url
+        '--extractor-args', 'youtube:player_client=android',
+        '-f', 'bestaudio',
+        '-x',
+        '--audio-format', 'mp3',
+        '--ffmpeg-location', ffmpegPath,
+        '-o', output,
+        url
     ])
 
     ytDlp.stdout.on('data', data => console.log(data.toString()))
