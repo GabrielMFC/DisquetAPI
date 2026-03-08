@@ -30,10 +30,16 @@ app.post('/download', (req, res) => {
     const cookiesPath = path.join(process.cwd(), "cookies.txt")
 
     const ytDlp = spawn(ytDlpPath, [
-        '--extractor-args',
-        'youtube:player_client=android,web;formats=missing_pot',
+        '--no-playlist',
 
-        '-f', 'bestaudio/best',
+        '--extractor-args',
+        'youtube:player_client=android,ios,web',
+
+        '--user-agent',
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36',
+
+        '-f', '140/bestaudio/best',
+
         '-x',
         '--audio-format', 'mp3',
 
