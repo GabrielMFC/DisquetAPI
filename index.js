@@ -2,7 +2,9 @@ const PORT = process.env.PORT || 3000
 const HOST = "0.0.0.0"
 const fs = require("fs")
 
-const cookies = process.env.YT_COOKIES.replace(/\\n/g, "\n")
+const cookiesRaw = process.env.YT_COOKIES.replace(/\\n/g, "\n")
+
+const cookies = "# Netscape HTTP Cookie File\n" + cookiesRaw
 
 fs.writeFileSync("/app/cookies.txt", cookies)
 
