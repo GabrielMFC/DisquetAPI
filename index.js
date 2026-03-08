@@ -19,12 +19,17 @@ app.post('/download', (req, res) => {
     const output = path.join(__dirname, 'downloads', '%(title)s.%(ext)s')
     const ytDlpPath = path.join(__dirname, 'yt-api', 'bin', 'yt-dlp')
 
+
+    const cookiesPath = path.join(process.cwd(), "cookies.txt")
+
     const ytDlp = spawn(ytDlpPath, [
-        '-x',
-        '--audio-format', 'mp3',
-        '--ffmpeg-location', ffmpegPath,
-        '-o', output,
-        url
+    '--cookies', cookiesPath,
+    '--user-agent', 'Mozilla/5.0',
+    '-x',
+    '--audio-format', 'mp3',
+    '--ffmpeg-location', ffmpegPath,
+    '-o', output,
+    url
     ])
 
     ytDlp.stdout.on('data', data => console.log(data.toString()))
