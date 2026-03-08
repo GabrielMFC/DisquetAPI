@@ -3,7 +3,8 @@ const HOST = "0.0.0.0"
 const fs = require("fs")
 
 if (process.env.YT_COOKIES) {
-  fs.writeFileSync("cookies.txt", process.env.YT_COOKIES)
+  const cookies = process.env.YT_COOKIES.replace(/\\n/g, "\n")
+  fs.writeFileSync("cookies.txt", cookies)
 }
 
 const express = require('express')
